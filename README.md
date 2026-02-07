@@ -12,6 +12,8 @@ KigaliMart Ltd is a retail company selling products across Rwanda. The Sales & O
 **Problem:** Management cannot easily identify top-selling products, high-value customers, regional growth trends, and inactive customers/products with no sales.  
 **Goal:** Use SQL JOINs and Window Functions to generate actionable reports.
 
+**Expected Outcome:**
+Produce SQL reports that rank top products/customers per region, compute running totals and moving averages, measure month-over-month growth, and segment customers into quartiles for targeted actions.
 -
 
 ## 2) Success Criteria 
