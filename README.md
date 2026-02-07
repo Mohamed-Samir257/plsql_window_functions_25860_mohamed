@@ -29,15 +29,7 @@ KigaliMart Ltd is a retail company selling products across Rwanda. The Sales & O
 - `orders(order_id PK, customer_id FK)`
 - `order_items(order_item_id PK, order_id FK, product_id FK)`
 
-### ER Diagram 
-```mermaid
-erDiagram
-  REGIONS ||--o{ CUSTOMERS : has
-  REGIONS ||--o{ PRODUCTS : stocks
-  CUSTOMERS ||--o{ ORDERS : places
-  ORDERS ||--o{ ORDER_ITEMS : contains
-  PRODUCTS ||--o{ ORDER_ITEMS : sold_as
-
+### References
 References
   Oracle Analytic Functions (Window Functions) Documentation:
 https://docs.oracle.com/en/database/oracle/oracle-database/
@@ -47,3 +39,16 @@ https://www.postgresql.org/docs/current/tutorial-window.html
 
 dbdiagram.io (ERD tool):
 https://dbdiagram.io/
+
+### ER Diagram 
+```mermaid
+erDiagram
+  REGIONS ||--o{ CUSTOMERS : has
+  REGIONS ||--o{ PRODUCTS : stocks
+  CUSTOMERS ||--o{ ORDERS : places
+  ORDERS ||--o{ ORDER_ITEMS : contains
+  PRODUCTS ||--o{ ORDER_ITEMS : sold_as
+
+
+
+
