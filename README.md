@@ -30,6 +30,22 @@ Produce SQL reports that rank top products/customers per region, compute running
 - `products(product_id PK, region_id FK)`
 - `orders(order_id PK, customer_id FK)`
 - `order_items(order_item_id PK, order_id FK, product_id FK)`
+## 4) Results Analysis
+**Descriptive**
+Sales performance differs by region, with some regions generating higher total revenue than others.
+A small number of products contribute to a large share of sales, and the ranking results show clear “top sellers” per region.
+Monthly totals show ups and downs over time, while the moving average highlights the overall trend more clearly.
+
+**Diagnostic **
+Regions with higher revenue usually have more active customers and more frequent orders (higher order volume).
+Some regions perform lower because there are inactive customers (customers with no orders) or low demand for certain products.
+Products with no sales suggest issues like wrong pricing, low visibility, poor regional fit, or overstocking in the wrong locations.
+
+**Prescriptive**
+Run promotions for inactive customers (welcome discounts, SMS/WhatsApp reminders, loyalty offers).
+For products with no sales, apply discounts, bundles, or remove/replace them based on category performance.
+Increase stock and marketing focus on top products per region, and reduce stock in regions where demand is low.
+Use the month-to-month growth report to repeat successful campaigns in months that showed strong growth and investigate drops quickly.
 
 ### References
 References
