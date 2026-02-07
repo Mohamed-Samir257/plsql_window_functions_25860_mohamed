@@ -23,6 +23,8 @@ SELECT
   PERCENT_RANK()OVER (PARTITION BY region_name ORDER BY revenue DESC) AS pct_rnk
 FROM product_region_revenue
 ORDER BY region_name, rnk;
+
+Shows the top products/customers per region by revenue. Helps quickly spot the best performers (and handles ties).
 ----------------------------------------------------------------------------------------
 
 2) Aggregate Window (SUM OVER, AVG OVER) + Frames (ROWS / RANGE)
@@ -72,6 +74,8 @@ JOIN order_items oi ON oi.order_id = o.order_id
 GROUP BY c.customer_id, c.full_name, o.order_date
 ORDER BY c.customer_id, o.order_date;
 
+Shows how sales add up over time and the 3-month average trend. Helps see if revenue is growing steadily or not.
+
 --------------------------------------------------------------------------------------
 
 3) Navigation Functions (LAG / LEAD)
@@ -102,6 +106,8 @@ SELECT
   END AS mom_growth_pct
 FROM monthly_sales
 ORDER BY region_name, month_start;
+
+Compares this month’s sales to the previous/next month. Helps detect increase or decrease in sales.
 --------------------------------------------------------------------------------------
 4) Distribution Functions (NTILE(4), CUME_DIST)
 WITH customer_spend AS (
@@ -125,3 +131,5 @@ SELECT
   CUME_DIST() OVER (ORDER BY total_spend ASC  NULLS FIRST) AS spend_cume_dist
 FROM customer_spend
 ORDER BY total_spend DESC NULLS LAST;
+
+Groups customers into 4 spend levels (high to low). Helps target VIP customers and re-engage low spenders.
