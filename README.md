@@ -37,3 +37,13 @@ erDiagram
   CUSTOMERS ||--o{ ORDERS : places
   ORDERS ||--o{ ORDER_ITEMS : contains
   PRODUCTS ||--o{ ORDER_ITEMS : sold_as
+
+References
+  Oracle Analytic Functions (Window Functions) Documentation:
+https://docs.oracle.com/en/database/oracle/oracle-database/
+
+PostgreSQL Window Functions Documentation:
+https://www.postgresql.org/docs/current/tutorial-window.html
+
+dbdiagram.io (ERD tool):
+https://dbdiagram.io/
