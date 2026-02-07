@@ -12,6 +12,8 @@ JOIN regions r     ON r.region_id = c.region_id
 JOIN order_items oi ON oi.order_id = o.order_id
 JOIN products p    ON p.product_id = oi.product_id
 ORDER BY o.order_id;
+
+This query returns only valid sales transactions where the order, customer, and product all match correctly. It is used for accurate revenue reporting because every row represents a real confirmed purchase line.
 --------------------------------------------------------------------
 -- 2 LEFT JOIN: customers with no orders
 SELECT
@@ -24,6 +26,8 @@ JOIN regions r ON r.region_id = c.region_id
 LEFT JOIN orders o ON o.customer_id = c.customer_id
 WHERE o.order_id IS NULL
 ORDER BY c.customer_id;
+
+This query lists customers who exist in the system but have never placed an order. It helps the business identify inactive customers for follow-up marketing or to verify if customer records are incomplete.
 -------------------------------------------------------------------
 -- 3 RIGHT JOIN: products with no order_items (no sales)
 SELECT
@@ -36,6 +40,8 @@ FROM order_items oi
 RIGHT JOIN products p ON p.product_id = oi.product_id
 WHERE oi.order_item_id IS NULL
 ORDER BY p.product_id;
+
+This query shows products that are in the inventory table but have no matching sales records in order_items. It helps detect slow-moving or unsold products so the company can discount them, bundle them, or stop stocking them.
 --------------------------------------------------------------------
 -- FULL OUTER JOIN: customers and products by region, including unmatched regions
 SELECT
@@ -51,6 +57,8 @@ FULL OUTER JOIN products p
 LEFT JOIN regions r
   ON r.region_id = COALESCE(c.region_id, p.region_id)
 ORDER BY region_id, c.customer_id, p.product_id;
+
+This query combines customers and products by region and still includes regions where one side is missing. It highlights stock–demand mismatches, such as regions with customers but few products (stock shortage risk) or products but low customer activity (low demand risk).
 --------------------------------------------------------------------
 -- SELF JOIN: customers in same region (pairs)
 SELECT
@@ -66,3 +74,5 @@ JOIN customers b
  AND a.customer_id < b.customer_id
 JOIN regions r ON r.region_id = a.region_id
 ORDER BY a.region_id, a.customer_id, b.customer_id;
+
+This query pairs customers who belong to the same region to compare them within a shared market area. It can support regional targeting, referral programs, or checking for potential duplicate customer entries.
